@@ -16,7 +16,11 @@ import { Route as CashFlowRouteImport } from './routes/cash-flow'
 import { Route as DistributionsRouteImport } from './routes/distributions'
 import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as FundTermsRouteImport } from './routes/fund-terms'
+import { Route as HelpRouteImport } from './routes/help'
+import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as RiskRouteImport } from './routes/risk'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as UsersRouteImport } from './routes/users'
 import { Route as PortfolioIndexRouteImport } from './routes/portfolio.index'
 import { Route as PortfolioUnitIdRouteImport } from './routes/portfolio.$unitId'
 
@@ -55,9 +59,29 @@ const FundTermsRoute = FundTermsRouteImport.update({
   path: '/fund-terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RiskRoute = RiskRouteImport.update({
   id: '/risk',
   path: '/risk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UsersRoute = UsersRouteImport.update({
+  id: '/users',
+  path: '/users',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PortfolioIndexRoute = PortfolioIndexRouteImport.update({
@@ -79,7 +103,11 @@ export interface FileRoutesByFullPath {
   '/distributions': typeof DistributionsRoute
   '/documents': typeof DocumentsRoute
   '/fund-terms': typeof FundTermsRoute
+  '/help': typeof HelpRoute
+  '/reports': typeof ReportsRoute
   '/risk': typeof RiskRoute
+  '/settings': typeof SettingsRoute
+  '/users': typeof UsersRoute
   '/portfolio/$unitId': typeof PortfolioUnitIdRoute
   '/portfolio/': typeof PortfolioIndexRoute
 }
@@ -91,7 +119,11 @@ export interface FileRoutesByTo {
   '/distributions': typeof DistributionsRoute
   '/documents': typeof DocumentsRoute
   '/fund-terms': typeof FundTermsRoute
+  '/help': typeof HelpRoute
+  '/reports': typeof ReportsRoute
   '/risk': typeof RiskRoute
+  '/settings': typeof SettingsRoute
+  '/users': typeof UsersRoute
   '/portfolio/$unitId': typeof PortfolioUnitIdRoute
   '/portfolio': typeof PortfolioIndexRoute
 }
@@ -104,7 +136,11 @@ export interface FileRoutesById {
   '/distributions': typeof DistributionsRoute
   '/documents': typeof DocumentsRoute
   '/fund-terms': typeof FundTermsRoute
+  '/help': typeof HelpRoute
+  '/reports': typeof ReportsRoute
   '/risk': typeof RiskRoute
+  '/settings': typeof SettingsRoute
+  '/users': typeof UsersRoute
   '/portfolio/$unitId': typeof PortfolioUnitIdRoute
   '/portfolio/': typeof PortfolioIndexRoute
 }
@@ -118,7 +154,11 @@ export interface FileRouteTypes {
     | '/distributions'
     | '/documents'
     | '/fund-terms'
+    | '/help'
+    | '/reports'
     | '/risk'
+    | '/settings'
+    | '/users'
     | '/portfolio/$unitId'
     | '/portfolio/'
   fileRoutesByTo: FileRoutesByTo
@@ -130,7 +170,11 @@ export interface FileRouteTypes {
     | '/distributions'
     | '/documents'
     | '/fund-terms'
+    | '/help'
+    | '/reports'
     | '/risk'
+    | '/settings'
+    | '/users'
     | '/portfolio/$unitId'
     | '/portfolio'
   id:
@@ -142,7 +186,11 @@ export interface FileRouteTypes {
     | '/distributions'
     | '/documents'
     | '/fund-terms'
+    | '/help'
+    | '/reports'
     | '/risk'
+    | '/settings'
+    | '/users'
     | '/portfolio/$unitId'
     | '/portfolio/'
   fileRoutesById: FileRoutesById
@@ -155,7 +203,11 @@ export interface RootRouteChildren {
   DistributionsRoute: typeof DistributionsRoute
   DocumentsRoute: typeof DocumentsRoute
   FundTermsRoute: typeof FundTermsRoute
+  HelpRoute: typeof HelpRoute
+  ReportsRoute: typeof ReportsRoute
   RiskRoute: typeof RiskRoute
+  SettingsRoute: typeof SettingsRoute
+  UsersRoute: typeof UsersRoute
   PortfolioUnitIdRoute: typeof PortfolioUnitIdRoute
   PortfolioIndexRoute: typeof PortfolioIndexRoute
 }
@@ -211,11 +263,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FundTermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/risk': {
       id: '/risk'
       path: '/risk'
       fullPath: '/risk'
       preLoaderRoute: typeof RiskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/users': {
+      id: '/users'
+      path: '/users'
+      fullPath: '/users'
+      preLoaderRoute: typeof UsersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/portfolio/': {
@@ -243,20 +323,14 @@ const rootRouteChildren: RootRouteChildren = {
   DistributionsRoute: DistributionsRoute,
   DocumentsRoute: DocumentsRoute,
   FundTermsRoute: FundTermsRoute,
+  HelpRoute: HelpRoute,
+  ReportsRoute: ReportsRoute,
   RiskRoute: RiskRoute,
+  SettingsRoute: SettingsRoute,
+  UsersRoute: UsersRoute,
   PortfolioUnitIdRoute: PortfolioUnitIdRoute,
   PortfolioIndexRoute: PortfolioIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
