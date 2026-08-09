@@ -136,7 +136,7 @@ function UnitDetail() {
         </div>
 
         <div className="mt-4 flex flex-wrap gap-1">
-          {unit.history.map((h, i) => (
+          {(unit.history as ("paid" | "missed" | "upcoming")[]).map((h, i: number) => (
             <span
               key={i}
               title={h}
