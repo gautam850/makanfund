@@ -17,10 +17,13 @@ import { Route as DistributionsRouteImport } from './routes/distributions'
 import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as FundTermsRouteImport } from './routes/fund-terms'
 import { Route as HelpRouteImport } from './routes/help'
+import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as RiskRouteImport } from './routes/risk'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as UsersRouteImport } from './routes/users'
+import { Route as WelcomeRouteImport } from './routes/welcome'
 import { Route as PortfolioIndexRouteImport } from './routes/portfolio.index'
 import { Route as PortfolioUnitIdRouteImport } from './routes/portfolio.$unitId'
 
@@ -64,6 +67,11 @@ const HelpRoute = HelpRouteImport.update({
   path: '/help',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReportsRoute = ReportsRouteImport.update({
   id: '/reports',
   path: '/reports',
@@ -74,6 +82,11 @@ const RiskRoute = RiskRouteImport.update({
   path: '/risk',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
@@ -82,6 +95,11 @@ const SettingsRoute = SettingsRouteImport.update({
 const UsersRoute = UsersRouteImport.update({
   id: '/users',
   path: '/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WelcomeRoute = WelcomeRouteImport.update({
+  id: '/welcome',
+  path: '/welcome',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PortfolioIndexRoute = PortfolioIndexRouteImport.update({
@@ -104,10 +122,13 @@ export interface FileRoutesByFullPath {
   '/documents': typeof DocumentsRoute
   '/fund-terms': typeof FundTermsRoute
   '/help': typeof HelpRoute
+  '/notifications': typeof NotificationsRoute
   '/reports': typeof ReportsRoute
   '/risk': typeof RiskRoute
+  '/search': typeof SearchRoute
   '/settings': typeof SettingsRoute
   '/users': typeof UsersRoute
+  '/welcome': typeof WelcomeRoute
   '/portfolio/$unitId': typeof PortfolioUnitIdRoute
   '/portfolio/': typeof PortfolioIndexRoute
 }
@@ -120,10 +141,13 @@ export interface FileRoutesByTo {
   '/documents': typeof DocumentsRoute
   '/fund-terms': typeof FundTermsRoute
   '/help': typeof HelpRoute
+  '/notifications': typeof NotificationsRoute
   '/reports': typeof ReportsRoute
   '/risk': typeof RiskRoute
+  '/search': typeof SearchRoute
   '/settings': typeof SettingsRoute
   '/users': typeof UsersRoute
+  '/welcome': typeof WelcomeRoute
   '/portfolio/$unitId': typeof PortfolioUnitIdRoute
   '/portfolio': typeof PortfolioIndexRoute
 }
@@ -137,10 +161,13 @@ export interface FileRoutesById {
   '/documents': typeof DocumentsRoute
   '/fund-terms': typeof FundTermsRoute
   '/help': typeof HelpRoute
+  '/notifications': typeof NotificationsRoute
   '/reports': typeof ReportsRoute
   '/risk': typeof RiskRoute
+  '/search': typeof SearchRoute
   '/settings': typeof SettingsRoute
   '/users': typeof UsersRoute
+  '/welcome': typeof WelcomeRoute
   '/portfolio/$unitId': typeof PortfolioUnitIdRoute
   '/portfolio/': typeof PortfolioIndexRoute
 }
@@ -155,10 +182,13 @@ export interface FileRouteTypes {
     | '/documents'
     | '/fund-terms'
     | '/help'
+    | '/notifications'
     | '/reports'
     | '/risk'
+    | '/search'
     | '/settings'
     | '/users'
+    | '/welcome'
     | '/portfolio/$unitId'
     | '/portfolio/'
   fileRoutesByTo: FileRoutesByTo
@@ -171,10 +201,13 @@ export interface FileRouteTypes {
     | '/documents'
     | '/fund-terms'
     | '/help'
+    | '/notifications'
     | '/reports'
     | '/risk'
+    | '/search'
     | '/settings'
     | '/users'
+    | '/welcome'
     | '/portfolio/$unitId'
     | '/portfolio'
   id:
@@ -187,10 +220,13 @@ export interface FileRouteTypes {
     | '/documents'
     | '/fund-terms'
     | '/help'
+    | '/notifications'
     | '/reports'
     | '/risk'
+    | '/search'
     | '/settings'
     | '/users'
+    | '/welcome'
     | '/portfolio/$unitId'
     | '/portfolio/'
   fileRoutesById: FileRoutesById
@@ -204,10 +240,13 @@ export interface RootRouteChildren {
   DocumentsRoute: typeof DocumentsRoute
   FundTermsRoute: typeof FundTermsRoute
   HelpRoute: typeof HelpRoute
+  NotificationsRoute: typeof NotificationsRoute
   ReportsRoute: typeof ReportsRoute
   RiskRoute: typeof RiskRoute
+  SearchRoute: typeof SearchRoute
   SettingsRoute: typeof SettingsRoute
   UsersRoute: typeof UsersRoute
+  WelcomeRoute: typeof WelcomeRoute
   PortfolioUnitIdRoute: typeof PortfolioUnitIdRoute
   PortfolioIndexRoute: typeof PortfolioIndexRoute
 }
@@ -270,6 +309,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HelpRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reports': {
       id: '/reports'
       path: '/reports'
@@ -284,6 +330,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RiskRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings': {
       id: '/settings'
       path: '/settings'
@@ -296,6 +349,13 @@ declare module '@tanstack/react-router' {
       path: '/users'
       fullPath: '/users'
       preLoaderRoute: typeof UsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/welcome': {
+      id: '/welcome'
+      path: '/welcome'
+      fullPath: '/welcome'
+      preLoaderRoute: typeof WelcomeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/portfolio/': {
@@ -324,10 +384,13 @@ const rootRouteChildren: RootRouteChildren = {
   DocumentsRoute: DocumentsRoute,
   FundTermsRoute: FundTermsRoute,
   HelpRoute: HelpRoute,
+  NotificationsRoute: NotificationsRoute,
   ReportsRoute: ReportsRoute,
   RiskRoute: RiskRoute,
+  SearchRoute: SearchRoute,
   SettingsRoute: SettingsRoute,
   UsersRoute: UsersRoute,
+  WelcomeRoute: WelcomeRoute,
   PortfolioUnitIdRoute: PortfolioUnitIdRoute,
   PortfolioIndexRoute: PortfolioIndexRoute,
 }
