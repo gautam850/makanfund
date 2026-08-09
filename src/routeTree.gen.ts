@@ -10,33 +10,154 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BuyoutPipelineRouteImport } from './routes/buyout-pipeline'
+import { Route as CapitalActivityRouteImport } from './routes/capital-activity'
+import { Route as CashFlowRouteImport } from './routes/cash-flow'
+import { Route as DistributionsRouteImport } from './routes/distributions'
+import { Route as DocumentsRouteImport } from './routes/documents'
+import { Route as FundTermsRouteImport } from './routes/fund-terms'
+import { Route as RiskRouteImport } from './routes/risk'
+import { Route as PortfolioIndexRouteImport } from './routes/portfolio.index'
+import { Route as PortfolioUnitIdRouteImport } from './routes/portfolio.$unitId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BuyoutPipelineRoute = BuyoutPipelineRouteImport.update({
+  id: '/buyout-pipeline',
+  path: '/buyout-pipeline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CapitalActivityRoute = CapitalActivityRouteImport.update({
+  id: '/capital-activity',
+  path: '/capital-activity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CashFlowRoute = CashFlowRouteImport.update({
+  id: '/cash-flow',
+  path: '/cash-flow',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DistributionsRoute = DistributionsRouteImport.update({
+  id: '/distributions',
+  path: '/distributions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocumentsRoute = DocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FundTermsRoute = FundTermsRouteImport.update({
+  id: '/fund-terms',
+  path: '/fund-terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RiskRoute = RiskRouteImport.update({
+  id: '/risk',
+  path: '/risk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortfolioIndexRoute = PortfolioIndexRouteImport.update({
+  id: '/portfolio/',
+  path: '/portfolio/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortfolioUnitIdRoute = PortfolioUnitIdRouteImport.update({
+  id: '/portfolio/$unitId',
+  path: '/portfolio/$unitId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/buyout-pipeline': typeof BuyoutPipelineRoute
+  '/capital-activity': typeof CapitalActivityRoute
+  '/cash-flow': typeof CashFlowRoute
+  '/distributions': typeof DistributionsRoute
+  '/documents': typeof DocumentsRoute
+  '/fund-terms': typeof FundTermsRoute
+  '/risk': typeof RiskRoute
+  '/portfolio/$unitId': typeof PortfolioUnitIdRoute
+  '/portfolio/': typeof PortfolioIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/buyout-pipeline': typeof BuyoutPipelineRoute
+  '/capital-activity': typeof CapitalActivityRoute
+  '/cash-flow': typeof CashFlowRoute
+  '/distributions': typeof DistributionsRoute
+  '/documents': typeof DocumentsRoute
+  '/fund-terms': typeof FundTermsRoute
+  '/risk': typeof RiskRoute
+  '/portfolio/$unitId': typeof PortfolioUnitIdRoute
+  '/portfolio': typeof PortfolioIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/buyout-pipeline': typeof BuyoutPipelineRoute
+  '/capital-activity': typeof CapitalActivityRoute
+  '/cash-flow': typeof CashFlowRoute
+  '/distributions': typeof DistributionsRoute
+  '/documents': typeof DocumentsRoute
+  '/fund-terms': typeof FundTermsRoute
+  '/risk': typeof RiskRoute
+  '/portfolio/$unitId': typeof PortfolioUnitIdRoute
+  '/portfolio/': typeof PortfolioIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/buyout-pipeline'
+    | '/capital-activity'
+    | '/cash-flow'
+    | '/distributions'
+    | '/documents'
+    | '/fund-terms'
+    | '/risk'
+    | '/portfolio/$unitId'
+    | '/portfolio/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/buyout-pipeline'
+    | '/capital-activity'
+    | '/cash-flow'
+    | '/distributions'
+    | '/documents'
+    | '/fund-terms'
+    | '/risk'
+    | '/portfolio/$unitId'
+    | '/portfolio'
+  id:
+    | '__root__'
+    | '/'
+    | '/buyout-pipeline'
+    | '/capital-activity'
+    | '/cash-flow'
+    | '/distributions'
+    | '/documents'
+    | '/fund-terms'
+    | '/risk'
+    | '/portfolio/$unitId'
+    | '/portfolio/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BuyoutPipelineRoute: typeof BuyoutPipelineRoute
+  CapitalActivityRoute: typeof CapitalActivityRoute
+  CashFlowRoute: typeof CashFlowRoute
+  DistributionsRoute: typeof DistributionsRoute
+  DocumentsRoute: typeof DocumentsRoute
+  FundTermsRoute: typeof FundTermsRoute
+  RiskRoute: typeof RiskRoute
+  PortfolioUnitIdRoute: typeof PortfolioUnitIdRoute
+  PortfolioIndexRoute: typeof PortfolioIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +169,84 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/buyout-pipeline': {
+      id: '/buyout-pipeline'
+      path: '/buyout-pipeline'
+      fullPath: '/buyout-pipeline'
+      preLoaderRoute: typeof BuyoutPipelineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/capital-activity': {
+      id: '/capital-activity'
+      path: '/capital-activity'
+      fullPath: '/capital-activity'
+      preLoaderRoute: typeof CapitalActivityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cash-flow': {
+      id: '/cash-flow'
+      path: '/cash-flow'
+      fullPath: '/cash-flow'
+      preLoaderRoute: typeof CashFlowRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/distributions': {
+      id: '/distributions'
+      path: '/distributions'
+      fullPath: '/distributions'
+      preLoaderRoute: typeof DistributionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/documents': {
+      id: '/documents'
+      path: '/documents'
+      fullPath: '/documents'
+      preLoaderRoute: typeof DocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fund-terms': {
+      id: '/fund-terms'
+      path: '/fund-terms'
+      fullPath: '/fund-terms'
+      preLoaderRoute: typeof FundTermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/risk': {
+      id: '/risk'
+      path: '/risk'
+      fullPath: '/risk'
+      preLoaderRoute: typeof RiskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portfolio/': {
+      id: '/portfolio/'
+      path: '/portfolio'
+      fullPath: '/portfolio/'
+      preLoaderRoute: typeof PortfolioIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portfolio/$unitId': {
+      id: '/portfolio/$unitId'
+      path: '/portfolio/$unitId'
+      fullPath: '/portfolio/$unitId'
+      preLoaderRoute: typeof PortfolioUnitIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BuyoutPipelineRoute: BuyoutPipelineRoute,
+  CapitalActivityRoute: CapitalActivityRoute,
+  CashFlowRoute: CashFlowRoute,
+  DistributionsRoute: DistributionsRoute,
+  DocumentsRoute: DocumentsRoute,
+  FundTermsRoute: FundTermsRoute,
+  RiskRoute: RiskRoute,
+  PortfolioUnitIdRoute: PortfolioUnitIdRoute,
+  PortfolioIndexRoute: PortfolioIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
